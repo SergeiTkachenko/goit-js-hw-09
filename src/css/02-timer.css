@@ -6,7 +6,7 @@ body {
   background-color: red;
 }
 .title {
-  font-size: 100px;
+  font-size: 70px;
   text-align: center;
 }
 
@@ -48,7 +48,7 @@ button {
   display: block;
   margin: auto;
   font-size: 23px;
-  padding: 7px 128px;
+  padding: 7px 115px;
   border-radius: 5px;
   cursor: pointer;
 
