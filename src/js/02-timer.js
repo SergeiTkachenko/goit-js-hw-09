@@ -16,28 +16,28 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
+    const selectedCalendarDates = calendar.selectedDates[0];
+    const pastOrFuture = selectedCalendarDates - new Date();
+
+    if (pastOrFuture <= 0) {
+      startBtn.disabled = true;
+      window.alert('Please choose a date in the future');
+    } else {
+      startBtn.disabled = false;
+    }
   },
 };
 
 const calendar = flatpickr(inputEl, options);
 
-calendar.config.onChange.push(onDataChange);
-
-function onDataChange() {
-  const selectedCalendarDates = calendar.selectedDates[0];
-  const pastOrFuture = selectedCalendarDates - new Date();
-
-  if (pastOrFuture <= 0) {
-    startBtn.disabled = true;
-    window.alert('Please choose a date in the future');
-  } else {
-    startBtn.disabled = false;
-  }
-}
-
 let intervalId = null;
+stopBtn.disabled = true;
 
 startBtn.addEventListener('click', () => {
+  inputEl.disabled = true;
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+
   intervalId = setInterval(() => {
     const selectedCalendarDates = calendar.selectedDates[0];
     let pastOrFuture = selectedCalendarDates - new Date();
@@ -57,6 +57,9 @@ startBtn.addEventListener('click', () => {
 
 stopBtn.addEventListener('click', () => {
   clearInterval(intervalId);
+  inputEl.disabled = false;
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
 });
 
 function convertMs(ms) {
