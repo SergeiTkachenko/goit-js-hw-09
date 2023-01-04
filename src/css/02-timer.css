@@ -1,0 +1,59 @@
+:root {
+  --main-animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+body {
+  background-color: red;
+}
+.title {
+  font-size: 100px;
+  text-align: center;
+}
+
+#datetime-picker {
+  background-color: brown;
+  text-align: center;
+  font-size: 23px;
+  padding: 7px;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+button {
+  display: block;
+  margin: auto;
+  font-size: 23px;
+  padding: 7px 128px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background-color: tomato;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: color var(--main-animation),
+    background-color var(--main-animation), transform var(--main-animation),
+    box-shadow var(--main-animation);
+}
+
+button:hover {
+  background-color: brown;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 6px rgba(29, 72, 190, 0.15);
+}
+button:focus {
+  outline: none;
+  background-color: brown;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 6px rgba(29, 72, 190, 0.15);
+}
+
+button:active {
+  background-color: brown;
+}
+.timer {
+  text-align: center;
+  font-size: 60px;
+}
