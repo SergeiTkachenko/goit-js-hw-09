@@ -29,8 +29,9 @@ const options = {
 };
 
 const calendar = flatpickr(inputEl, options);
-
 let intervalId = null;
+let timerId = null;
+
 stopBtn.disabled = true;
 
 startBtn.addEventListener('click', () => {
@@ -55,8 +56,23 @@ startBtn.addEventListener('click', () => {
   }, 1000);
 });
 
+startBtn.addEventListener('click', () => {
+  timerId = setInterval(() => {
+    const selectedCalendarDates = calendar.selectedDates[0];
+    const pastOrFuture = selectedCalendarDates - new Date();
+    if (pastOrFuture < 0) {
+      inputEl.disabled = false;
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+      window.alert('Time is over');
+      clearInterval(timerId);
+    }
+  }, 1000);
+});
+
 stopBtn.addEventListener('click', () => {
   clearInterval(intervalId);
+  clearInterval(timerId);
   inputEl.disabled = false;
   startBtn.disabled = false;
   stopBtn.disabled = true;

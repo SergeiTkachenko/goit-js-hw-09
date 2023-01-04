@@ -44,6 +44,10 @@ body {
   background-color: brown;
 }
 
+#datetime-picker:disabled {
+  background-color: rgb(196, 106, 106);
+}
+
 button {
   display: block;
   margin: auto;
@@ -75,7 +79,35 @@ button:focus {
 button:active {
   background-color: brown;
 }
+
+button:disabled {
+  background-color: rgb(196, 106, 106);
+}
+
 .timer {
   text-align: center;
   font-size: 60px;
+}
+
+.flatpickr-calendar {
+  background-color: tomato;
+}
+
+.flatpickr-day.selected {
+  background-color: brown;
+  border-color: rgb(196, 106, 106);
+}
+
+.flatpickr-day.selected:hover {
+  background-color: brown;
+  border-color: rgb(196, 106, 106);
+}
+.flatpickr-day.selected:focus {
+  background-color: brown;
+  border-color: rgb(196, 106, 106);
+}
+
+.flatpickr-day.selected:active {
+  background-color: brown;
+  border-color: rgb(196, 106, 106);
 }
