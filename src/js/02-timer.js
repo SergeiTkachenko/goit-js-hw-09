@@ -35,6 +35,8 @@ function onDataChange() {
   }
 }
 
+let intervalId = null;
+
 startBtn.addEventListener('click', () => {
   intervalId = setInterval(() => {
     const selectedCalendarDates = calendar.selectedDates[0];
