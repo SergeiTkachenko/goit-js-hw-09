@@ -88,7 +88,7 @@ button:disabled {
   text-align: center;
   font-size: 60px;
 }
-/* 
+
 .flatpickr-calendar {
   background-color: tomato;
 }
@@ -110,4 +110,4 @@ button:disabled {
 .flatpickr-day.selected:active {
   background-color: brown;
   border-color: rgb(196, 106, 106);
-} */
+}
