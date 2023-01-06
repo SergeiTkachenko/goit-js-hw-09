@@ -10,13 +10,15 @@ function onClickSubmit(e) {
   let formDelay = Number(formElements.delay.value);
   const formStep = Number(formElements.step.value);
 
-  for (let i = 1; i <= formAmount; i += 1) {
-    createPromise(i, formDelay);
-    formDelay += formStep;
+  for (let i = 0; i < formAmount; i += 1) {
+    let parameters = {};
+    parameters.position = i + 1;
+    parameters.delay = formDelay + formStep * i;
+    createPromise(parameters);
   }
 }
 
-function createPromise(position, delay) {
+function createPromise({ position, delay }) {
   const shouldResolve = Math.random() > 0.3;
 
   new Promise((Fulfill, Reject) => {
