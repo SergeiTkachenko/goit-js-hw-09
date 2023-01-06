@@ -1,4 +1,5 @@
 const formEl = document.querySelector('.form');
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 formEl.addEventListener('submit', onClickSubmit);
 
@@ -24,9 +25,11 @@ function createPromise({ position, delay }) {
   new Promise((Fulfill, Reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        Fulfill(console.log(`✅ Fulfilled promise ${position} in ${delay}ms`));
+        Fulfill(
+          Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`)
+        );
       } else {
-        Reject(console.log(`❌ Rejected promise ${position} in ${delay}ms`));
+        Reject(Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`));
       }
     }, delay);
   });
