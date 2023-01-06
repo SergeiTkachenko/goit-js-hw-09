@@ -70,7 +70,7 @@ startBtn.addEventListener('click', () => {
       inputEl.disabled = false;
       startBtn.disabled = false;
       stopBtn.disabled = true;
-      Report.failure('Time is over', 'Choose a new timer date', 'Okay');
+      Report.success('Time is over', 'Choose a new timer date', 'Okay');
       clearInterval(timerId);
     }
   }, 1000);
