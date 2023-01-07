@@ -12,8 +12,8 @@ function onClickSubmit(e) {
   const formStep = Number(formElements.step.value);
 
   for (let i = 1; i <= formAmount; i += 1) {
-    formDelay += formStep;
     createPromise(i, formDelay);
+    formDelay += formStep;
   }
 }
 
