@@ -12,14 +12,20 @@ function onClickSubmit(e) {
   const formStep = Number(formElements.step.value);
 
   for (let i = 1; i <= formAmount; i += 1) {
-    createPromise(i, formDelay);
+    createPromise(i, formDelay)
+      .then(value => {
+        Notify.success(value);
+      })
+      .catch(err => {
+        Notify.failure(err);
+      });
+
     formDelay += formStep;
   }
 }
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
-
   const promise = new Promise((fulfill, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
@@ -29,11 +35,33 @@ function createPromise(position, delay) {
       }
     }, delay);
   });
-  promise
-    .then(value => {
-      Notify.success(value);
-    })
-    .catch(err => {
-      Notify.failure(err);
-    });
+
+  return promise;
 }
+
+// for (let i = 1; i <= formAmount; i += 1) {
+//   createPromise(i, formDelay);
+//   formDelay += formStep;
+// }
+// }
+
+// function createPromise(position, delay) {
+// const shouldResolve = Math.random() > 0.3;
+
+// const promise = new Promise((fulfill, reject) => {
+//   setTimeout(() => {
+//     if (shouldResolve) {
+//       fulfill(`✅ Fulfilled promise ${position} in ${delay}ms`);
+//     } else {
+//       reject(`❌ Rejected promise ${position} in ${delay}ms`);
+//     }
+//   }, delay);
+// });
+// promise
+//   .then(value => {
+//     Notify.success(value);
+//   })
+//   .catch(err => {
+//     Notify.failure(err);
+//   });
+// }
